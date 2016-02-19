@@ -1,4 +1,4 @@
 ---
 - hosts: localhost
   roles:
-    - "ansible-role-bootstrap"
+    - "ansible-bootstrap"

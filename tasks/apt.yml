@@ -1,4 +1,11 @@
 ---
+- name: Add repository for google chrome
+  apt_repository:
+    repo: "deb http://dl.google.com/linux/chrome/deb/ stable main"
+    update_cache: yes
+- name: Add key for google chrome
+  apt_key:
+    url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
 - name: Update apt packages
   apt:
     update_cache: "yes"
@@ -19,3 +26,4 @@
     - tmux
     - xsel
     - language-pack-ja
+    - google-chrome-stable

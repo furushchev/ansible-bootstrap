@@ -1,5 +1,4 @@
 # Ansible Role for bootstrap
-- - -
 
 [![Build Status](https://travis-ci.org/furushchev/ansible-bootstrap.svg)](https://travis-ci.org/furushchev/ansible-bootstrap)
 
