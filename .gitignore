@@ -75,3 +75,8 @@ tramp
 
 .kitchen/
 .kitchen.local.yml
+
+.bundle/
+Gemfile.lock
+ansible.cfg
+vendor/

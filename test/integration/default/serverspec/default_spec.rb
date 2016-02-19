@@ -9,6 +9,7 @@ expected_packages = %w[
   wget
   ssh
   google-chrome-stable
+  htop
 ]
 
 expected_packages.each do |expected_package|
