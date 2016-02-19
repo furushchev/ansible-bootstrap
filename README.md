@@ -11,6 +11,17 @@ TODO
 ### Variables
 TODO
 
+### Test on local machine
+
+1. `docker`, `rubygem`, `git` are required.
+
+2. execute
+
+```bash
+bundle install --path=vendor/bundle
+bundle exec kitchen test
+```
+
 ### Author
 furushchev
 
