@@ -1,0 +1,21 @@
+---
+- include: apt.yml
+- include: user.yml
+- include: emacs.yml
+  when: "'emacs' in item"
+  with_items: ${editor}
+  become: yes
+  become_user: "{{user.name}}"
+- include: vim.yml
+  when: "'vim' in item"
+  with_items: ${editor}
+  become: yes
+  become_user: "{{user.name}}"
+- include: bash.yml
+  become: yes
+  become_user: "{{ user.name }}"
+  when: "'bash' in shell"
+- include: zsh.yml
+  become: yes
+  become_user: "{{ user.name }}"
+  when: "'zsh' in shell"

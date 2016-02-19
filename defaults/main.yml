@@ -1,0 +1,10 @@
+---
+user:
+  name: leus
+  password: leus
+  github: no
+shell: /bin/zsh
+editor:
+  - emacs
+  - vim
+

@@ -1,0 +1,15 @@
+---
+- name: "Prepare Password"
+  shell: "openssl passwd -salt johosystemkogaku -1 {{ user.password }}"
+  register: encrypted_password
+  changed_when: False
+  always_run: yes
+- name: "Create {{ user.name }} user"
+  user:
+    name: "{{ user.name }}"
+    password: "{{ encrypted_password.stdout }}"
+    shell: "{{shell}}"
+    state: present
+    append: yes
+    groups: sudo
+  become: yes

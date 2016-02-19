@@ -1,0 +1,12 @@
+---
+- name: Check emacs24 is available
+  apt_repository:
+    repo: 'ppa:cassou/emacs'
+    update_cache: "yes"
+  when: ansible_distribution_release == "precise"
+  become: yes
+- name: Install emacs24
+  apt:
+    name: emacs24-nox
+    force: yes
+  become: yes

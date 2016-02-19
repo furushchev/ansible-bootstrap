@@ -1,0 +1,20 @@
+---
+- name: Update apt packages
+  apt:
+    update_cache: "yes"
+    upgrade: "dist"
+  become: yes
+
+- name: Install essential packages
+  apt:
+    name: "{{ item }}"
+  become: yes
+  with_items:
+    - ssh
+    - wget
+    - curl
+    - build-essential
+    - git
+    - unzip
+    - tmux
+    - xsel

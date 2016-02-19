@@ -1,0 +1,36 @@
+---
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      language: python
+      python: "2.7"
+    - os: linux
+      dist: precise
+      sudo: required
+      language: python
+      python: "2.7"
+env:
+  global:
+    - TEST_SITE="-i test/inventory test/test.yml"
+before_install:
+  - sudo apt-get -y purge 'mysql*' 'postgre*'
+  - sudo apt-get -y autoremove
+  - sudo apt-get -y autoclean
+  - sudo rm -rf /var/lib/mysql
+  - sudo truncate -s 0 /var/log/mysql/error.log || true
+install:
+  - pip install ansible
+  - printf '[defaults]\nroles_path = ../' > ansible.cfg
+before_script:
+  - ansible --version
+script:
+  - ansible-playbook $TEST_SITE --syntax-check
+  - ansible-playbook $TEST_SITE --connection=local --sudo
+  # Run the role/playbook again, checking to make sure it's idempotent.
+  - >
+    ansible-playbook $TEST_SITE --connection=local --sudo
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)

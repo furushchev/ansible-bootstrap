@@ -1,0 +1,11 @@
+---
+- name: Change default shell to zsh
+  user:
+    name: "{{user.name}}"
+    shell: "{{shell}}"
+- name: Copy templates
+  template:
+    src: "{{ item }}"
+    dest: "~/.zsh/{{ item }}"
+  with_fileglob:
+    - "../templates/zsh/*"

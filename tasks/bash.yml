@@ -1,0 +1,32 @@
+---
+- name: Extend shell history
+  replace:
+    dest: '~/.bashrc'
+    regexp: "{{ item }}="
+    replace: "{{ item }}=100000"
+  with_items:
+    - HISTSIZE
+    - HISTFILESIZE
+- name: Append alias to .bashrc
+  lineinfile:
+    dest: '~/.bashrc'
+    insertafter: 'alias '
+    line: "alias {{ item.key }}='{{ item.value }}'"
+  with_items:
+    - { key: 'rm', value: 'rm -i' }
+    - { key: 'mv', value: 'mv -i' }
+    - { key: 'cp', value: 'cp -i' }
+    - { key: 'ls', value: 'ls --color=auto' }
+    - { key: 'l', value: 'ls -Fa' }
+    - { key: 'grep', value: 'grep --color=auto' }
+    - { key: 'fgrep', value: 'fgrep --color=auto' }
+    - { key: 'egrep', value: 'egrep --color=auto' }
+    - { key: 'pbcopy', value: 'xsel --clipboard --input' }
+    - { key: 'pbpaste', value: 'xsel --clipboard --output' }
+    - { key: 'xcopy', value: 'xsel --primary --input' }
+    - { key: 'xpaste', value: 'xsel --primary --output' }
+- name: Change umask in .bashrc
+  lineinfile:
+    dest: '~/.bashrc'
+    insertafter: '^umask'
+    line: 'umask 022'
