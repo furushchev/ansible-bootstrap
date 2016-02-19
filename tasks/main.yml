@@ -2,15 +2,11 @@
 - include: apt.yml
 - include: user.yml
 - include: emacs.yml
-  when: "'emacs' in item"
-  with_items: ${editor}
+  when: "'emacs' in editor"
   become: yes
-  become_user: "{{user.name}}"
 - include: vim.yml
-  when: "'vim' in item"
-  with_items: ${editor}
+  when: "'vim' in editor"
   become: yes
-  become_user: "{{user.name}}"
 - include: bash.yml
   become: yes
   become_user: "{{ user.name }}"
@@ -19,3 +15,7 @@
   become: yes
   become_user: "{{ user.name }}"
   when: "'zsh' in shell"
+- include: hub.yml
+  become: yes
+  become_user: "{{ user.name }}"
+  when: "hub is defined"

@@ -73,3 +73,5 @@ tramp
 .Trash-*
 
 
+.kitchen/
+.kitchen.local.yml

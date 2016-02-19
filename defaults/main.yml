@@ -7,4 +7,6 @@ shell: /bin/zsh
 editor:
   - emacs
   - vim
-
+hub:
+  version: 2.2.3
+  checksum: "md5:7d33b611d2b1633fd4969776b34ae736"

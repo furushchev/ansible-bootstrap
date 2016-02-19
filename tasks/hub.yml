@@ -1,0 +1,16 @@
+---
+- name: Fetch hub command from github
+  get_url:
+    url: "https://github.com/github/hub/releases/download/v{{hub.version}}/hub-linux-amd64-{{hub.version}}.tgz"
+    dest: "/tmp/hub.tar.gz"
+    checksum: "{{hub.checksum}}"
+  register: fetch_hub
+- name: Unarchive hub command
+  unarchive:
+    src: "/tmp/hub.tar.gz"
+    dest: "/tmp"
+    copy: no
+- name: Install hub command
+  shell: "/tmp/hub-linux-amd64-{{hub.version}}/install"
+  become: yes
+  become_user: root

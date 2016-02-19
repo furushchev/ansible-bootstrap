@@ -1,0 +1,22 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  require_chef_omnibus: false
+  name: ansible_playbook
+  hosts: all
+  require_ansible_repo: true
+  ansible_verbose: true
+
+platforms:
+  - name: ubuntu-trusty
+    driver_config:
+      image: ubuntu:trusty
+  - name: ubuntu-precise
+    driver_config:
+      image: ubuntu:precise
+
+suites:
+  - name: default
+
