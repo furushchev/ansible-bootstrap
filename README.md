@@ -1,7 +1,7 @@
 # Ansible Role for bootstrap
 - - -
 
-[![Build Status](https://travis-ci.org/furushchev/ansible-role-bootstrap.svg?branch=master)](https://travis-ci.org/furushchev/ansible-role-bootstrap)
+[![Build Status](https://travis-ci.org/furushchev/ansible-bootstrap.svg)](https://travis-ci.org/furushchev/ansible-bootstrap)
 
 Installs essential settings for software development
 
